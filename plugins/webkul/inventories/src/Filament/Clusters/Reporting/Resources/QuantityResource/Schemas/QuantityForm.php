@@ -28,7 +28,7 @@ class QuantityForm
                     ->relationship(
                         name: 'product',
                         titleAttribute: 'name',
-                        modifyQueryUsing: fn (Builder $query) => $query->where('is_storable', true)->whereNull('is_configurable'),
+                        modifyQueryUsing: fn (Builder $query) => $query->where('is_storable', true)->whereNull('is_configurable')->whereNull('deleted_at'),
                     )
                     ->searchable()
                     ->preload()
