@@ -874,7 +874,7 @@ class OrderForm
 
         return static::convertPrice(
             $product->cost ?: $product->price,
-            Company::find($companyId)?->currency_id,
+            default_currency_id(),
             $currencyId,
             $companyId
         );
