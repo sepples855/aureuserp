@@ -206,6 +206,9 @@ class QuantitiesTable
                             ->title(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.actions.delete.notification.title'))
                             ->body(__('inventories::filament/clusters/products/resources/product/pages/manage-quantities.table.actions.delete.notification.body')),
                     ),
-            ]);
+            ])
+            ->modifyQueryUsing(function (Builder $query) {
+                $query->whereHas('product', fn (Builder $query) => $query->whereNull('deleted_at'));
+            });
     }
 }
