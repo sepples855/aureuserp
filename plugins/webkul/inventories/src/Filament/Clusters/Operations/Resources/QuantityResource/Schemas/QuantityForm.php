@@ -59,6 +59,7 @@ class QuantityForm
                     )
                     ->searchable()
                     ->preload()
+                    ->required()
                     ->createOptionForm(fn (Schema $schema): Schema => LotResource::form($schema))
                     ->createOptionAction(function (Action $action, Get $get) {
                         $action
