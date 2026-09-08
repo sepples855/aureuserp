@@ -518,6 +518,7 @@ class OperationForm
                         fn (array $arguments, Get $get): bool => filled($get("moves.{$arguments['item']}.product_id"))
                     ),
             ])
+            ->deleteAction(fn (Action $action) => $action->requiresConfirmation())
             ->deletable(fn ($record): bool => ! in_array($record?->state, [OperationState::DONE, OperationState::CANCELED]))
             ->addable(fn ($record): bool => ! in_array($record?->state, [OperationState::DONE, OperationState::CANCELED]));
     }
